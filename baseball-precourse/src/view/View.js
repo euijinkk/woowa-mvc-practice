@@ -1,4 +1,5 @@
 import { $ } from '../utils/DOM.js';
+import { APP_TEMPLATE } from '../utils/template.js';
 
 export class View {
   constructor() {
@@ -6,5 +7,7 @@ export class View {
     this.addElements();
   }
 
-  addElements() {}
+  addElements() {
+    this.$app.innerHTML = APP_TEMPLATE;
+  }
 }
