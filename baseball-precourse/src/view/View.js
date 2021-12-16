@@ -1,5 +1,5 @@
 import { $ } from '../utils/DOM.js';
-import { APP_TEMPLATE } from '../utils/template.js';
+import { APP_TEMPLATE, CORRECT_RESULT } from '../utils/template.js';
 
 export class View {
   constructor() {
@@ -13,6 +13,14 @@ export class View {
       const userInputNumbers = this.$userInput.value;
       fn(userInputNumbers);
     });
+  }
+
+  showResult(ballCount) {
+    if (ballCount === '3스트라이크') {
+      this.$result.innerHTML = CORRECT_RESULT;
+      return;
+    }
+    this.$result.innerHTML = ballCount;
   }
 
   addElements() {

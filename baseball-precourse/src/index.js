@@ -18,15 +18,19 @@ class BaseballGame {
     console.log(`computerInputNumbers`, computerInputNumbers);
     const ballCount = this.play(computerInputNumbers, userInputNumbers);
     console.log(`ballCount`, ballCount);
-    // showResult(ball, strike);
+    this.view.showResult(ballCount);
   }
 
   play(computerInputNumbers, userInputNumbers) {
     const ball = this.calculateBall(computerInputNumbers, userInputNumbers);
     const strike = this.calculateStrike(computerInputNumbers, userInputNumbers);
+    if (ball === '' && strike === '') {
+      return '낫싱';
+    }
 
-    return `${ball}볼 ${strike}스트라이크`;
+    return `${ball} ${strike}`.trim();
   }
+
   calculateBall(computerInputNumbers, userInputNumbers) {
     let ball = 0;
     for (let i = 0; i < 3; i++) {
@@ -37,7 +41,10 @@ class BaseballGame {
         ball++;
       }
     }
-    return ball;
+    if (ball === 0) {
+      return '';
+    }
+    return `${ball}볼`;
   }
 
   calculateStrike(computerInputNumbers, userInputNumbers) {
@@ -47,7 +54,10 @@ class BaseballGame {
         strike++;
       }
     }
-    return strike;
+    if (strike === 0) {
+      return '';
+    }
+    return `${strike}스트라이크`;
   }
 }
 
