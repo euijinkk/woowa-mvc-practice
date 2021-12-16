@@ -5,6 +5,7 @@ class BaseballGame {
   constructor() {
     this.view = new View();
     this.model = new Model();
+    this.model.generateRandomNumbers();
     this.triggerEvent();
   }
 
@@ -13,10 +14,8 @@ class BaseballGame {
   }
 
   onSubmit(userInputNumbers) {
-    const computerInputNumbers = this.model.generateRandomNumbers();
+    const computerInputNumbers = this.model.computerInputNumbers;
     console.log(`computerInputNumbers`, computerInputNumbers);
-    console.log(`typeof computerInputNumbers`, typeof computerInputNumbers);
-    console.log(`typeof userInputNumbers`, typeof userInputNumbers);
     const ballCount = this.play(computerInputNumbers, userInputNumbers);
     console.log(`ballCount`, ballCount);
     // showResult(ball, strike);

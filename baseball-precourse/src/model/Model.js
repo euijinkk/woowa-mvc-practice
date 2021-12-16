@@ -1,5 +1,5 @@
 export class Model {
-  computerInputNumbers;
+  computerInputNumbers = [];
 
   generateRandomNumbers() {
     MissionUtils.Random.pickNumberInRange(1, 9);
@@ -11,6 +11,7 @@ export class Model {
       }
       randomNumbers.push(randomNumber);
     }
-    return randomNumbers.join('');
+    this.computerInputNumbers = randomNumbers.join('');
+    return this.computerInputNumbers;
   }
 }
