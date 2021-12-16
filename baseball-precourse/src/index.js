@@ -13,12 +13,24 @@ class BaseballGame {
     this.view.setOnSubmit(this.onSubmit.bind(this));
   }
 
+  triggerRestartEvent() {
+    this.view.setOnRestart(this.onRestart.bind(this));
+  }
+
   onSubmit(userInputNumbers) {
     const computerInputNumbers = this.model.computerInputNumbers;
     console.log(`computerInputNumbers`, computerInputNumbers);
     const ballCount = this.play(computerInputNumbers, userInputNumbers);
     console.log(`ballCount`, ballCount);
+
     this.view.showResult(ballCount);
+    if (ballCount === '3스트라이크') {
+      this.triggerRestartEvent();
+    }
+  }
+
+  onRestart() {
+    this.model.generateRandomNumbers();
   }
 
   play(computerInputNumbers, userInputNumbers) {

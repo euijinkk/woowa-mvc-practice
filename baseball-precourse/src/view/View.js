@@ -15,6 +15,16 @@ export class View {
     });
   }
 
+  setOnRestart(fn) {
+    console.log(`$('#game-restart-button')`, $('#game-restart-button'));
+    $('#game-restart-button').addEventListener('click', (e) => {
+      e.preventDefault();
+      this.$userInput.value = '';
+      this.$result.innerHTML = '';
+      fn();
+    });
+  }
+
   showResult(ballCount) {
     if (ballCount === '3스트라이크') {
       this.$result.innerHTML = CORRECT_RESULT;
