@@ -19,10 +19,7 @@ class BaseballGame {
 
   onSubmit(userInputNumbers) {
     const computerInputNumbers = this.model.computerInputNumbers;
-    console.log(`computerInputNumbers`, computerInputNumbers);
     const ballCount = this.play(computerInputNumbers, userInputNumbers);
-    console.log(`ballCount`, ballCount);
-
     this.view.showResult(ballCount);
     if (ballCount === '3스트라이크') {
       this.triggerRestartEvent();
@@ -39,7 +36,6 @@ class BaseballGame {
     if (ball === '' && strike === '') {
       return '낫싱';
     }
-
     return `${ball} ${strike}`.trim();
   }
 
@@ -73,4 +69,4 @@ class BaseballGame {
   }
 }
 
-const app = new BaseballGame();
+const baseballGame = new BaseballGame();

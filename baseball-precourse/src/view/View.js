@@ -16,7 +16,6 @@ export class View {
   }
 
   setOnRestart(fn) {
-    console.log(`$('#game-restart-button')`, $('#game-restart-button'));
     $('#game-restart-button').addEventListener('click', (e) => {
       e.preventDefault();
       this.$userInput.value = '';
