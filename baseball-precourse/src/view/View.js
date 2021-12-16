@@ -17,7 +17,7 @@ export class View {
   addElements() {
     this.$app.innerHTML = APP_TEMPLATE;
     this.$userInput = $('#user-input');
-    this.$submitButton = $('submit');
-    this.$result = $('result');
+    this.$submitButton = $('#submit');
+    this.$result = $('#result');
   }
 }

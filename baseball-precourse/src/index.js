@@ -1,14 +1,27 @@
 import { Model } from './model/Model.js';
 import { View } from './view/view.js';
-import { Controller } from './controller/Controller.js';
 
-class App {
+class BaseballGame {
   constructor() {
-    const view = new View();
-    const model = new Model();
+    this.view = new View();
+    this.model = new Model();
+    this.triggerEvent();
+  }
 
-    this.controller = new Controller(model, view);
+  triggerEvent() {
+    this.view.setOnSubmit(this.onSubmit.bind(this));
+  }
+
+  onSubmit(userInputNumbers) {
+    const computerInputNumbers = this.model.generateRandomNumbers();
+    console.log(`computerInputNumbers`, computerInputNumbers);
+    const ballCount = this.play(computerInputNumbers, userInputNumbers);
+    // showResult(ball, strike);
+  }
+
+  play(computerInputNumbers, userInputNumbers) {
+    return '결과 값 String';
   }
 }
 
-const app = new App();
+const app = new BaseballGame();
