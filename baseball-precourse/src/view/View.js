@@ -1,3 +1,4 @@
+import { COUNT_TEXT } from '../utils/constant.js';
 import { $ } from '../utils/DOM.js';
 import { APP_TEMPLATE, CORRECT_RESULT } from '../utils/template.js';
 
@@ -25,7 +26,7 @@ export class View {
   }
 
   showResult(ballCount) {
-    if (ballCount === '3스트라이크') {
+    if (ballCount === `3${COUNT_TEXT.STRIKE}`) {
       this.$result.innerHTML = CORRECT_RESULT;
       return;
     }

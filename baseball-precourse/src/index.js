@@ -1,4 +1,5 @@
 import { Model } from './model/Model.js';
+import { COUNT_TEXT, RANDOM_LENGTH } from './utils/constant.js';
 import { View } from './view/view.js';
 
 class BaseballGame {
@@ -21,7 +22,7 @@ class BaseballGame {
     const computerInputNumbers = this.model.computerInputNumbers;
     const ballCount = this.play(computerInputNumbers, userInputNumbers);
     this.view.showResult(ballCount);
-    if (ballCount === '3스트라이크') {
+    if (ballCount === `3${COUNT_TEXT.STRIKE}`) {
       this.triggerRestartEvent();
     }
   }
@@ -34,14 +35,14 @@ class BaseballGame {
     const ball = this.calculateBall(computerInputNumbers, userInputNumbers);
     const strike = this.calculateStrike(computerInputNumbers, userInputNumbers);
     if (ball === '' && strike === '') {
-      return '낫싱';
+      return COUNT_TEXT.NOTHING;
     }
     return `${ball} ${strike}`.trim();
   }
 
   calculateBall(computerInputNumbers, userInputNumbers) {
     let ball = 0;
-    for (let i = 0; i < 3; i++) {
+    for (let i = 0; i < RANDOM_LENGTH; i++) {
       if (
         computerInputNumbers.includes(userInputNumbers[i]) &&
         computerInputNumbers[i] !== userInputNumbers[i]
@@ -52,12 +53,12 @@ class BaseballGame {
     if (ball === 0) {
       return '';
     }
-    return `${ball}볼`;
+    return `${ball}${COUNT_TEXT.BALL}`;
   }
 
   calculateStrike(computerInputNumbers, userInputNumbers) {
     let strike = 0;
-    for (let i = 0; i < 3; i++) {
+    for (let i = 0; i < RANDOM_LENGTH; i++) {
       if (computerInputNumbers[i] === userInputNumbers[i]) {
         strike++;
       }
@@ -65,7 +66,7 @@ class BaseballGame {
     if (strike === 0) {
       return '';
     }
-    return `${strike}스트라이크`;
+    return `${strike}${COUNT_TEXT.STRIKE}`;
   }
 }
 
