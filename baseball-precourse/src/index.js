@@ -20,7 +20,21 @@ class BaseballGame {
   }
 
   play(computerInputNumbers, userInputNumbers) {
+    const ball = this.calculateBall(computerInputNumbers, userInputNumbers);
+    const strike = this.calculateStrike(computerInputNumbers, userInputNumbers);
+
     return '결과 값 String';
+  }
+  calculateBall(computerInputNumbers, userInputNumbers) {}
+
+  calculateStrike(computerInputNumbers, userInputNumbers) {
+    let strike = 0;
+    for (let i = 0; i < 3; i++) {
+      if (computerInputNumbers[i] === userInputNumbers[i]) {
+        strike++;
+      }
+    }
+    return strike;
   }
 }
 
