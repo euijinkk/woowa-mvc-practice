@@ -10,7 +10,8 @@ export class View {
   setOnSubmit(fn) {
     this.$submitButton.addEventListener('click', (e) => {
       e.preventDefault();
-      fn(e.target.value);
+      const userInputNumbers = this.$userInput.value;
+      fn(userInputNumbers);
     });
   }
 

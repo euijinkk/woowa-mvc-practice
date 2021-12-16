@@ -11,6 +11,6 @@ export class Model {
       }
       randomNumbers.push(randomNumber);
     }
-    return Number(randomNumbers.join(''));
+    return randomNumbers.join('');
   }
 }

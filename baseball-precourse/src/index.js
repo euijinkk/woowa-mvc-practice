@@ -15,7 +15,10 @@ class BaseballGame {
   onSubmit(userInputNumbers) {
     const computerInputNumbers = this.model.generateRandomNumbers();
     console.log(`computerInputNumbers`, computerInputNumbers);
+    console.log(`typeof computerInputNumbers`, typeof computerInputNumbers);
+    console.log(`typeof userInputNumbers`, typeof userInputNumbers);
     const ballCount = this.play(computerInputNumbers, userInputNumbers);
+    console.log(`ballCount`, ballCount);
     // showResult(ball, strike);
   }
 
@@ -23,9 +26,20 @@ class BaseballGame {
     const ball = this.calculateBall(computerInputNumbers, userInputNumbers);
     const strike = this.calculateStrike(computerInputNumbers, userInputNumbers);
 
-    return '결과 값 String';
+    return `${ball}볼 ${strike}스트라이크`;
   }
-  calculateBall(computerInputNumbers, userInputNumbers) {}
+  calculateBall(computerInputNumbers, userInputNumbers) {
+    let ball = 0;
+    for (let i = 0; i < 3; i++) {
+      if (
+        computerInputNumbers.includes(userInputNumbers[i]) &&
+        computerInputNumbers[i] !== userInputNumbers[i]
+      ) {
+        ball++;
+      }
+    }
+    return ball;
+  }
 
   calculateStrike(computerInputNumbers, userInputNumbers) {
     let strike = 0;
