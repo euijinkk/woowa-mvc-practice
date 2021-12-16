@@ -1,5 +1,6 @@
 import { Model } from './model/Model.js';
 import { COUNT_TEXT, RANDOM_LENGTH } from './utils/constant.js';
+import { isUserInputValid } from './utils/validator.js';
 import { View } from './view/view.js';
 
 class BaseballGame {
@@ -19,6 +20,9 @@ class BaseballGame {
   }
 
   onSubmit(userInputNumbers) {
+    if (!isUserInputValid(userInputNumbers)) {
+      return;
+    }
     const computerInputNumbers = this.model.computerInputNumbers;
     const ballCount = this.play(computerInputNumbers, userInputNumbers);
     this.view.showResult(ballCount);
