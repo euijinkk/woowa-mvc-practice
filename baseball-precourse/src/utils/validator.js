@@ -17,7 +17,7 @@ export const userInputCheckMethods = [
     }
     return isFilled;
   },
-  // 0이 아닌 숫자를 입력 받도록
+  // 숫자만 입력 받도록
   (value) => {
     const isNumber = Number(value);
     if (!isNumber) {
@@ -27,7 +27,6 @@ export const userInputCheckMethods = [
   },
   // 0을 포함하면 안되도록
   (value) => {
-    console.log(`value.includes('0')`, value.includes('0'));
     const isZeroIncluded = value.includes('0');
     if (isZeroIncluded) {
       alert(USER_INPUT_ALERT.includeZeroError);
